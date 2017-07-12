@@ -1,0 +1,2 @@
+class UserDraft < ApplicationRecord
+end
