@@ -1,6 +1,7 @@
 class CreateDraftPicks < ActiveRecord::Migration[5.0]
   def change
     create_table :draft_picks do |t|
+      t.belongs_to :league, null: false
     	t.belongs_to :user, null: false
     	t.belongs_to :player, null: true
     	t.integer :position, null: false
@@ -10,7 +11,7 @@ class CreateDraftPicks < ActiveRecord::Migration[5.0]
     	t.integer :duration
       t.timestamps
 
-      t.index :position, unique: true
+      t.index [:league_id, :position], unique: true
     end
   end
 end

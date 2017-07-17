@@ -1,0 +1,10 @@
+= form_for @user, :html => { :class => 'form-horizontal', multipart: true } do |f|
+  .form-group{class: "#{'has-error' if @user.errors[:name].present?}"}
+    = f.label :name, :class => 'control-label'
+    .controls
+      = f.text_field :name, :class => 'form-control', maxlength: 255
+  .form-group
+    = f.label :password, :class => 'control-label'
+    .controls
+      = f.password_field :password, :class => 'form-control', maxlength: 255
+  = f.submit nil, :class => 'btn btn-primary'

@@ -16,6 +16,7 @@ ActiveRecord::Schema.define(version: 20170712192133) do
   enable_extension "plpgsql"
 
   create_table "draft_picks", force: :cascade do |t|
+    t.integer  "league_id",  null: false
     t.integer  "user_id",    null: false
     t.integer  "player_id"
     t.integer  "position",   null: false
@@ -25,8 +26,9 @@ ActiveRecord::Schema.define(version: 20170712192133) do
     t.integer  "duration"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["league_id", "position"], name: "index_draft_picks_on_league_id_and_position", unique: true, using: :btree
+    t.index ["league_id"], name: "index_draft_picks_on_league_id", using: :btree
     t.index ["player_id"], name: "index_draft_picks_on_player_id", using: :btree
-    t.index ["position"], name: "index_draft_picks_on_position", unique: true, using: :btree
     t.index ["user_id"], name: "index_draft_picks_on_user_id", using: :btree
   end
 
@@ -48,6 +50,7 @@ ActiveRecord::Schema.define(version: 20170712192133) do
   end
 
   create_table "players", force: :cascade do |t|
+    t.integer  "league_id",       null: false
     t.integer  "team_id",         null: false
     t.string   "name",            null: false
     t.string   "position",        null: false
@@ -58,6 +61,7 @@ ActiveRecord::Schema.define(version: 20170712192133) do
     t.integer  "team_of_the_day"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
+    t.index ["league_id"], name: "index_players_on_league_id", using: :btree
     t.index ["team_id"], name: "index_players_on_team_id", using: :btree
   end
 
@@ -76,10 +80,11 @@ ActiveRecord::Schema.define(version: 20170712192133) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string   "name",                       null: false
-    t.boolean  "admin",      default: false, null: false
-    t.datetime "created_at",                 null: false
-    t.datetime "updated_at",                 null: false
+    t.string   "name",                            null: false
+    t.string   "password_digest",                 null: false
+    t.boolean  "admin",           default: false, null: false
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
     t.index ["name"], name: "index_users_on_name", unique: true, using: :btree
   end
 

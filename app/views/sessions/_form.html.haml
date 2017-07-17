@@ -1,0 +1,11 @@
+= form_tag create_session_path do
+  .form-group
+    = label_tag :name, nil, :class => 'control-label'
+    .controls
+      = text_field_tag :name, @name, :class => 'form-control', maxlength: 255
+  .form-group
+    = label_tag :password, nil, :class => 'control-label'
+    .controls
+      = password_field_tag :password, nil, :class => 'form-control', maxlength: 255
+  = submit_tag nil, :class => 'btn btn-primary'
+  

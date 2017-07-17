@@ -1,6 +1,7 @@
 class CreatePlayers < ActiveRecord::Migration[5.0]
   def change
     create_table :players do |t|
+      t.belongs_to :league, null: false, index: true
     	t.belongs_to :team, null: false
     	t.string :name, null: false
     	t.string :position, null: false 
