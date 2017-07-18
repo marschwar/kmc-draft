@@ -50,17 +50,17 @@ ActiveRecord::Schema.define(version: 20170712192133) do
   end
 
   create_table "players", force: :cascade do |t|
-    t.integer  "league_id",       null: false
-    t.integer  "team_id",         null: false
-    t.string   "name",            null: false
-    t.string   "position",        null: false
+    t.integer  "league_id",    null: false
+    t.integer  "team_id",      null: false
+    t.string   "name",         null: false
+    t.string   "position",     null: false
     t.integer  "games_played"
-    t.decimal  "score"
+    t.decimal  "grade"
     t.integer  "goals"
     t.integer  "assists"
-    t.integer  "team_of_the_day"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.integer  "allstar_team"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
     t.index ["league_id"], name: "index_players_on_league_id", using: :btree
     t.index ["team_id"], name: "index_players_on_team_id", using: :btree
   end

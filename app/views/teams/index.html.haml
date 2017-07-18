@@ -1,0 +1,6 @@
+%ul
+	- @teams.each do |team|
+		%li
+			=link_to team.name, team_path(team)
+
+= link_to 'Team anlegen', new_team_path

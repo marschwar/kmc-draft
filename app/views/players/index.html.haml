@@ -1,0 +1,7 @@
+%h1= "Spieler in Liga #{@league.name}"
+
+=link_to 'Spieler anlegen', new_league_player_path(@league)
+
+%ul
+	- @players.each do |player|
+		%li= link_to player.name, league_player_path(@league, player)

@@ -6,10 +6,10 @@ class CreatePlayers < ActiveRecord::Migration[5.0]
     	t.string :name, null: false
     	t.string :position, null: false 
     	t.integer :games_played
-    	t.numeric :score
+    	t.numeric :grade
       t.integer :goals
       t.integer :assists
-      t.integer :team_of_the_day
+      t.integer :allstar_team
       t.timestamps
     end
   end

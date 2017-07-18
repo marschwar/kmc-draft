@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   get 'logout', to: 'sessions#destroy', as: 'destroy_session'
 
   resources :users, except: [:index]
+  resources :teams, except: [:destroy]
 
   resources :leagues do
   	resources :players

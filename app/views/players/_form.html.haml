@@ -1,0 +1,34 @@
+= form_for [@league, @player], :html => { :class => 'form-horizontal', multipart: true } do |f|
+  .form-group{class: "#{'has-error' if @player.errors[:name].present?}"}
+    = f.label :name, :class => 'control-label'
+    .controls
+      = f.text_field :name, :class => 'form-control', maxlength: 255
+  .form-group{class: "#{'has-error' if @player.errors[:position].present?}"}
+    = f.label :position, :class => 'control-label'
+    .controls
+      = f.select :position, options_for_select(Player::POSITIONS), {}, :class => 'form-control'
+  .form-group{class: "#{'has-error' if @player.errors[:team].present?}"}
+    = f.label :team, :class => 'control-label'
+    .controls
+      = f.select :team_id, options_from_collection_for_select(@teams, :id, :name), {},  :class => 'form-control'
+  .form-group{class: "#{'has-error' if @player.errors[:games_played].present?}"}
+    = f.label :games_played, :class => 'control-label'
+    .controls
+      = f.number_field :games_played, :class => 'form-control', in: 0..34
+  .form-group{class: "#{'has-error' if @player.errors[:grade].present?}"}
+    = f.label :grade, :class => 'control-label'
+    .controls
+      = f.text_field :grade, :class => 'form-control', maxlength: 5
+  .form-group{class: "#{'has-error' if @player.errors[:goals].present?}"}
+    = f.label :goals, :class => 'control-label'
+    .controls
+      = f.number_field :goals, :class => 'form-control', in: 0..100
+  .form-group{class: "#{'has-error' if @player.errors[:assists].present?}"}
+    = f.label :assists, :class => 'control-label'
+    .controls
+      = f.number_field :assists, :class => 'form-control', in: 0..100
+  .form-group{class: "#{'has-error' if @player.errors[:allstar_team].present?}"}
+    = f.label :allstar_team, :class => 'control-label'
+    .controls
+      = f.number_field :allstar_team, :class => 'form-control', in: 0..34
+  = f.submit nil, :class => 'btn btn-primary'
