@@ -1,3 +1,7 @@
 %h1= @league.name
 
+=link_to 'Team Manager', league_users_path(@league)
+|
 =link_to 'Spieler', league_players_path(@league)
+|
+=link_to 'Draft Picks', league_draft_picks_path(@league)

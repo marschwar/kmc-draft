@@ -1,0 +1,12 @@
+%h1= "Team Manager von #{@league.name}"
+Manager:
+= @league.user.name
+
+%ul
+	- @league_users.each do |league_user|
+		%li
+			= league_user.name
+			- if @league.user == league_user
+				(Manager)
+
+=render partial: 'form'

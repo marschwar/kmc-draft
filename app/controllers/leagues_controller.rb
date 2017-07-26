@@ -13,6 +13,7 @@ class LeaguesController < ApplicationController
 	def create
 		@league = League.new league_params
 		@league.user = current_user
+		@league.users = [current_user]
 		if @league.save
 			flash[:info] = 'Liga erfolgreich angelegt'
 			redirect_to leagues_path

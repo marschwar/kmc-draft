@@ -11,6 +11,10 @@ Rails.application.routes.draw do
   resources :teams, except: [:destroy]
 
   resources :leagues do
+    resources :users, controller: 'league_users'
   	resources :players
+    resources :draft_picks, only: [:index, :show]
+    get 'draft_order', to: 'leagues#show_draft_order', as: 'league_draft_order'
+    put 'draft_order', to: 'leagues#update_draft_order', as: 'update_league_draft_order'
   end
 end

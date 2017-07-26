@@ -1,0 +1,7 @@
+= form_for [@league_user], :html => { :class => 'form-horizontal', multipart: true } do |f|
+	= f.fields_for :user do |user_form|
+		.form-group
+			= user_form.label :name, :class => 'control-label'
+			.controls
+				= user_form.text_field :name, :class => 'form-control', maxlength: 255
+	= f.submit nil, :class => 'btn btn-primary'
