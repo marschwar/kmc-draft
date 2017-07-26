@@ -81,7 +81,4 @@ test:
 #     url: <%= ENV['DATABASE_URL'] %>
 #
 production:
-  <<: *default
-  database: kmc-draft_production
-  username: kmc-draft
-  password: <%= ENV['KMC-DRAFT_DATABASE_PASSWORD'] %>
+  url: <%= ENV['DATABASE_URL'] %>
